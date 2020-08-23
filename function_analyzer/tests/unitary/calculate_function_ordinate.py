@@ -1,6 +1,7 @@
 from function_analyzer.use_cases.calculate_function_ordinate import calculate_function_ordinate, do_addition, \
     find_left_operand, find_right_operand, \
-    substitute_operands_and_operation_for_partial_result, find_left_operand_position, find_right_operand_tail_position
+    substitute_operands_and_operation_for_partial_result, find_left_operand_position, find_right_operand_tail_position, \
+    find_left_sign_or_end_position
 
 
 def test_calculate_function_ordinate_for_two_addends_addition():
@@ -33,6 +34,14 @@ def test_find_left_operand_position():
     returned_operand_position = find_left_operand_position(function_string, sign_position)
     expected_operand_position = 0
     assert returned_operand_position == expected_operand_position
+
+
+def test_find_left_sign_or_end_position_for_sum_operand():
+    function_string = '1+2+3-3'
+    sign_position = 3
+    returned_left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
+    expected_left_sign_or_end_position = 1
+    assert returned_left_sign_or_end_position == expected_left_sign_or_end_position
 
 
 def test_find_right_sign_operand():

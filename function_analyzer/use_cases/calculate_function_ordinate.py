@@ -51,6 +51,23 @@ def find_left_operand_position(function_string, sign_position):  # TODO make it 
     return left_sign_or_end_position
 
 
+def find_left_sign_or_end_position(function_string, sign_position):
+    left_substring = function_string[:sign_position]
+    reversed_left_substring = left_substring[::-1]
+    left_sign_position = 0
+    character_position = sign_position
+    for character in reversed_left_substring:
+        character_position -= 1
+        if is_operation(character):
+            left_sign_position = character_position
+    return left_sign_position
+
+
+def is_operation(character: str):
+    if character == '+':
+        return True
+
+
 def find_left_operand(function_string, sign_position, left_sign_or_end_position) -> int:
     left_operand = function_string[left_sign_or_end_position:sign_position]
     return left_operand
