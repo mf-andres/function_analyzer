@@ -10,7 +10,7 @@ def calculate_function_ordinate(abscissa: float, function_string: str) -> float:
     return ordinate
 
 
-def substitute_x_for_abscissa(abscissa: float, function_string: str) -> str:  # TODO test for many x's
+def substitute_x_for_abscissa(abscissa: float, function_string: str) -> str:
     function_string = function_string.replace("x", str(abscissa))
     return function_string
 
