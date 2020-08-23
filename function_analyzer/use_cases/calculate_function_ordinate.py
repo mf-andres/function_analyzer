@@ -82,7 +82,7 @@ def find_right_operand_tail_position(function_string, sign_position):
 def find_right_sign_or_end_position(function_string, sign_position):
     sign_position_tail = sign_position + 1
     right_substring = function_string[sign_position_tail:]
-    right_sign_position = 0
+    right_sign_position = len(function_string)
     character_position = sign_position
     for character in right_substring:
         character_position += 1
