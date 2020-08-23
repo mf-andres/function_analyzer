@@ -1,5 +1,5 @@
-from function_analyzer.infrastracture.sign_finder.sign_finder import find_right_sign_or_end_position, \
-    find_left_sign_or_end_position
+from function_analyzer.infrastracture.operand_finder.operand_finder import find_addition_sign_position, \
+    find_left_operand_position, find_right_operand_tail_position, find_left_operand, find_right_operand
 
 
 def calculate_function_ordinate(abscissa: float, function_string: str) -> float:
@@ -12,10 +12,6 @@ def calculate_function_ordinate(abscissa: float, function_string: str) -> float:
 def substitute_x_for_abscissa(abscissa: float, function_string: str) -> str:  # TODO test for many x's
     function_string = function_string.replace("x", str(abscissa))
     return function_string
-
-
-def format_ordinate(ordinate: str) -> float:
-    return float(ordinate)
 
 
 def do_operations_recursively(function_string: str) -> str:
@@ -45,33 +41,6 @@ def do_addition(function_string: str) -> str:  # TODO make do_operation
     return function_string
 
 
-def find_addition_sign_position(function_string: str) -> int:  # TODO make find operation sign position
-    addition_position = function_string.find('+')
-    return addition_position
-
-
-def find_left_operand_position(function_string, sign_position):  # TODO make it into a operand_finder class?
-    left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
-    return left_sign_or_end_position
-
-
-def find_left_operand(function_string, sign_position, left_sign_or_end_position) -> int:
-    left_operand = function_string[left_sign_or_end_position:sign_position]
-    return left_operand
-
-
-def find_right_operand_tail_position(function_string, sign_position):
-    right_sign_or_end_position = find_right_sign_or_end_position(function_string, sign_position)
-    right_operand_tail_position = right_sign_or_end_position
-    return right_operand_tail_position
-
-
-def find_right_operand(function_string, sign_position, right_operand_tail) -> int:
-    sign_tail_position = sign_position + 1
-    right_operand = function_string[sign_tail_position:right_operand_tail]
-    return right_operand
-
-
 def calculate_partial_result(left_operand, right_operand):
     partial_result = float(left_operand) + float(right_operand)
     return partial_result
@@ -84,3 +53,7 @@ def substitute_operands_and_operation_for_partial_result(function_string,
     operands_and_operation_to_be_replaced = function_string[left_operand_position:right_operand_tail]
     function_string = function_string.replace(operands_and_operation_to_be_replaced, str(partial_result))
     return function_string
+
+
+def format_ordinate(ordinate: str) -> float:
+    return float(ordinate)
