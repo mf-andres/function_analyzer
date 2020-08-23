@@ -74,8 +74,21 @@ def find_left_operand(function_string, sign_position, left_sign_or_end_position)
 
 
 def find_right_operand_tail_position(function_string, sign_position):
-    right_sign_tail_or_end_position = sign_position + 2
-    return right_sign_tail_or_end_position
+    right_sign_or_end_position = find_right_sign_or_end_position(function_string, sign_position)
+    right_operand_tail_position = right_sign_or_end_position
+    return right_operand_tail_position
+
+
+def find_right_sign_or_end_position(function_string, sign_position):
+    sign_position_tail = sign_position + 1
+    right_substring = function_string[sign_position_tail:]
+    right_sign_position = 0
+    character_position = sign_position
+    for character in right_substring:
+        character_position += 1
+        if is_operation(character):
+            right_sign_position = character_position
+    return right_sign_position
 
 
 def find_right_operand(function_string, sign_position, right_operand_tail) -> int:
