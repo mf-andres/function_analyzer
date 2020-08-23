@@ -28,16 +28,16 @@ def addition_found(function_string: str) -> bool:  # TODO make operation_found <
 
 
 def do_addition(function_string: str) -> str:  # TODO make do_operation <- operation classes
-    addition_sign_position = find_addition_sign_position(function_string)  # TODO different abstraction layers mixed
+    addition_sign_position = find_addition_sign_position(function_string)
     left_operand_position = find_left_operand_position(function_string, addition_sign_position)
     right_operand_tail_position = find_right_operand_tail_position(function_string, addition_sign_position)
     left_operand = find_left_operand(function_string, addition_sign_position, left_operand_position)
     right_operand = find_right_operand(function_string, addition_sign_position, right_operand_tail_position)
     partial_result = calculate_partial_result(left_operand, right_operand)
-    function_string = substitute_operands_and_operation_for_partial_result(function_string,
-                                                                           left_operand_position,
-                                                                           right_operand_tail_position,
-                                                                           partial_result)
+    function_string = substitute_operation_for_partial_result(function_string,
+                                                              left_operand_position,
+                                                              right_operand_tail_position,
+                                                              partial_result)
     function_string = do_operations_recursively(function_string)
     return function_string
 
@@ -47,10 +47,10 @@ def calculate_partial_result(left_operand, right_operand):  # TODO <- operation 
     return partial_result
 
 
-def substitute_operands_and_operation_for_partial_result(function_string,
-                                                         left_operand_position,
-                                                         right_operand_tail,
-                                                         partial_result):
+def substitute_operation_for_partial_result(function_string,
+                                            left_operand_position,
+                                            right_operand_tail,
+                                            partial_result):
     operands_and_operation_to_be_replaced = function_string[left_operand_position:right_operand_tail]
     function_string = function_string.replace(operands_and_operation_to_be_replaced, str(partial_result))
     return function_string
