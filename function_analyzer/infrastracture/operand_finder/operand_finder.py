@@ -2,11 +2,6 @@ from function_analyzer.infrastracture.sign_finder.sign_finder import find_left_s
     find_right_sign_or_end_position
 
 
-def find_addition_sign_position(function_string: str) -> int:  # TODO make find operation sign position
-    addition_position = function_string.find('+')
-    return addition_position
-
-
 def find_left_operand_position(function_string, sign_position):
     left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
     return left_sign_or_end_position

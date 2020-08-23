@@ -1,5 +1,6 @@
-from function_analyzer.infrastracture.operand_finder.operand_finder import find_addition_sign_position, \
-    find_left_operand_position, find_right_operand_tail_position, find_left_operand, find_right_operand
+from function_analyzer.infrastracture.operand_finder.operand_finder import find_left_operand_position, \
+    find_right_operand_tail_position, find_left_operand, find_right_operand
+from function_analyzer.infrastracture.sign_finder.sign_finder import find_addition_sign_position
 
 
 def calculate_function_ordinate(abscissa: float, function_string: str) -> float:
@@ -22,11 +23,11 @@ def do_operations_recursively(function_string: str) -> str:
         return function_string
 
 
-def addition_found(function_string: str) -> bool:  # TODO make operation_found
+def addition_found(function_string: str) -> bool:  # TODO make operation_found <- operation classes
     return function_string.find('+') >= 0
 
 
-def do_addition(function_string: str) -> str:  # TODO make do_operation
+def do_addition(function_string: str) -> str:  # TODO make do_operation <- operation classes
     addition_sign_position = find_addition_sign_position(function_string)  # TODO different abstraction layers mixed
     left_operand_position = find_left_operand_position(function_string, addition_sign_position)
     right_operand_tail_position = find_right_operand_tail_position(function_string, addition_sign_position)
@@ -41,7 +42,7 @@ def do_addition(function_string: str) -> str:  # TODO make do_operation
     return function_string
 
 
-def calculate_partial_result(left_operand, right_operand):
+def calculate_partial_result(left_operand, right_operand):  # TODO <- operation classes
     partial_result = float(left_operand) + float(right_operand)
     return partial_result
 
