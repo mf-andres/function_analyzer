@@ -1,3 +1,7 @@
+from function_analyzer.infrastracture.sign_finder.sign_finder import find_right_sign_or_end_position, \
+    find_left_sign_or_end_position
+
+
 def calculate_function_ordinate(abscissa: float, function_string: str) -> float:
     function_string = substitute_x_for_abscissa(abscissa, function_string)
     ordinate = do_operations_recursively(function_string)
@@ -47,25 +51,8 @@ def find_addition_sign_position(function_string: str) -> int:  # TODO make find 
 
 
 def find_left_operand_position(function_string, sign_position):  # TODO make it into a operand_finder class?
-    left_sign_or_end_position = sign_position - 1
+    left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
     return left_sign_or_end_position
-
-
-def find_left_sign_or_end_position(function_string, sign_position):
-    left_substring = function_string[:sign_position]
-    reversed_left_substring = left_substring[::-1]
-    left_sign_position = 0
-    character_position = sign_position
-    for character in reversed_left_substring:
-        character_position -= 1
-        if is_operation(character):
-            left_sign_position = character_position
-    return left_sign_position
-
-
-def is_operation(character: str):
-    if character == '+':
-        return True
 
 
 def find_left_operand(function_string, sign_position, left_sign_or_end_position) -> int:
@@ -77,18 +64,6 @@ def find_right_operand_tail_position(function_string, sign_position):
     right_sign_or_end_position = find_right_sign_or_end_position(function_string, sign_position)
     right_operand_tail_position = right_sign_or_end_position
     return right_operand_tail_position
-
-
-def find_right_sign_or_end_position(function_string, sign_position):
-    sign_position_tail = sign_position + 1
-    right_substring = function_string[sign_position_tail:]
-    right_sign_position = len(function_string)
-    character_position = sign_position
-    for character in right_substring:
-        character_position += 1
-        if is_operation(character):
-            right_sign_position = character_position
-    return right_sign_position
 
 
 def find_right_operand(function_string, sign_position, right_operand_tail) -> int:

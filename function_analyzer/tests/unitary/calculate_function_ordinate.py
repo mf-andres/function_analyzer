@@ -28,7 +28,7 @@ def test_find_left_operand():
     assert returned_operand == expected_operand
 
 
-def test_find_left_operand_position():
+def test_find_left_operand_position():  # TODO separate tests into classes
     function_string = '1+2'
     sign_position = 1
     returned_operand_position = find_left_operand_position(function_string, sign_position)
@@ -41,6 +41,14 @@ def test_find_left_sign_or_end_position_for_sum_operand():
     sign_position = 3
     returned_left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
     expected_left_sign_or_end_position = 1
+    assert returned_left_sign_or_end_position == expected_left_sign_or_end_position
+
+
+def test_find_left_sign_or_end_position_for_end():
+    function_string = '1+2+3-3'
+    sign_position = 1
+    returned_left_sign_or_end_position = find_left_sign_or_end_position(function_string, sign_position)
+    expected_left_sign_or_end_position = 0
     assert returned_left_sign_or_end_position == expected_left_sign_or_end_position
 
 
