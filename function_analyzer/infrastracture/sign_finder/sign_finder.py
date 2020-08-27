@@ -1,9 +1,9 @@
 from function_analyzer.domain.sign import is_sign, contains_sign
 
 
-def find_addition_sign_position(function_string: str) -> int:  # TODO make find operation sign position
-    addition_position = function_string.find('+')
-    return addition_position
+def find_sign_position(function_string: str, sign: str) -> int:
+    sign_position = function_string.find(sign)
+    return sign_position
 
 
 def find_left_sign_or_end_position(function_string, sign_position):
