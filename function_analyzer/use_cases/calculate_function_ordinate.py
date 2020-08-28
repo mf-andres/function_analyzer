@@ -1,5 +1,7 @@
-def calculate_function_ordinate(substraction, addition, abscissa: float, function_string: str) -> float:
+def calculate_function_ordinate(operations_finder, substraction, addition, abscissa: float, function_string: str) -> float:
     function_string = substitute_x_for_abscissa(abscissa, function_string)
+    substractions = operations_finder.find_substractions(function_string)
+    additions = operations_finder.find_additions(function_string)
     ordinate = do_operations_recursively(substraction, addition, function_string)
     ordinate = format_ordinate(ordinate)
     return ordinate

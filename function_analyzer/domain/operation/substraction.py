@@ -2,11 +2,14 @@ from function_analyzer.domain.operation.operation import Operation
 from function_analyzer.infrastracture.operand_finder.operand_finder import find_left_operand_position, \
     find_right_operand_tail_position, find_left_operand, find_right_operand
 from function_analyzer.infrastracture.sign_finder.sign_finder import find_sign_position
-from function_analyzer.use_cases.calculate_function_ordinate import do_operations_recursively
 
 
 class Substraction(Operation):
     SUBSTRACTION_SIGN = '-'
+
+    def __init__(self, function_string, sign_position):
+        self.__function_string = function_string
+        self.__sign_position = sign_position
 
     @staticmethod
     def operation_found(function_string):  # TODO refactor negative case

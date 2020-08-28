@@ -6,3 +6,10 @@ def test_finds_two_additions():
     operation_finder = OperationFinder(function_string)
     additions = operation_finder.find_additions()
     assert len(additions) == 2
+
+
+def test_finds_two_substractions():
+    function_string = '1-1-1'
+    operation_finder = OperationFinder(function_string)
+    substractions = operation_finder.find_substractions()
+    assert len(substractions) == 2

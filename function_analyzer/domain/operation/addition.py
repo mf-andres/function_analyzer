@@ -8,6 +8,10 @@ from function_analyzer.use_cases.calculate_function_ordinate import do_operation
 class Addition(Operation):
     ADDITION_SIGN = '+'
 
+    def __init__(self, function_string, sign_position):
+        self.__function_string = function_string
+        self.__sign_position = sign_position
+
     @staticmethod
     def operation_found(function_string):
         return function_string.find('+') > 0
