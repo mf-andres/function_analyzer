@@ -9,8 +9,12 @@ class Substraction(Operation):
     SUBSTRACTION_SIGN = '-'
 
     @staticmethod
-    def operation_found(function_string):
-        return function_string.find('-') >= 0
+    def operation_found(function_string):  # TODO refactor negative case
+        sign_position = function_string.find('-')
+        if sign_position == 0:
+            return function_string.find('-', 1) > 0
+        else:
+            return sign_position > 0
 
     @staticmethod
     def do_operation(function_string):

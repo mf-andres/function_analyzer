@@ -3,7 +3,14 @@ from function_analyzer.domain.sign import is_sign, contains_sign
 
 def find_sign_position(function_string: str, sign: str) -> int:
     sign_position = function_string.find(sign)
-    return sign_position
+    if sign_position == 0:  # TODO refactor negative sign case
+        if function_string[sign_position] == '-':
+            sign_position = function_string.find(sign, sign_position + 1)
+            return sign_position
+        else:
+            raise ValueError(f'Unsolvable function string: {function_string}')
+    else:
+        return sign_position
 
 
 def find_left_sign_or_end_position(function_string, sign_position):

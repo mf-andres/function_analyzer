@@ -1,4 +1,6 @@
 def is_sign(character: str):
+    if character == '-':
+        return True
     if character == '+':
         return True
 

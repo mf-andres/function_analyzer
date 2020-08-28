@@ -10,7 +10,7 @@ class Addition(Operation):
 
     @staticmethod
     def operation_found(function_string):
-        return function_string.find('+') >= 0
+        return function_string.find('+') > 0
 
     @staticmethod
     def do_operation(function_string):
