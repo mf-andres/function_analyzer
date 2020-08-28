@@ -1,5 +1,6 @@
 from function_analyzer.domain.operation.addition import Addition
 from function_analyzer.domain.operation.substraction import Substraction
+from function_analyzer.infrastracture.errors.errors import SignMisinterpretationError
 
 
 class OperationFinder:
@@ -10,8 +11,11 @@ class OperationFinder:
         operations = list()
         for character_position, character in enumerate(self._function_string):
             if character == operation_sign:
-                operation = operation_class(self._function_string, character_position)
-                operations.append(operation)
+                try:
+                    operation = operation_class(self._function_string, character_position)
+                    operations.append(operation)
+                except SignMisinterpretationError:
+                    continue
         return operations
 
     def find_substractions(self):
