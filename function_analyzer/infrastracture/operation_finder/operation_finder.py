@@ -4,15 +4,15 @@ from function_analyzer.infrastracture.errors.errors import SignMisinterpretation
 
 
 class OperationFinder:
-    def __init__(self, function_string):
-        self._function_string = function_string
+    def __init__(self, function_string):  # TODO make expression object
+        self.function_string = function_string
 
     def __find_operation(self, operation_sign, operation_class):
         operations = list()
-        for character_position, character in enumerate(self._function_string):
+        for character_position, character in enumerate(self.function_string):
             if character == operation_sign:
                 try:
-                    operation = operation_class(self._function_string, character_position)
+                    operation = operation_class(self.function_string, character_position)
                     operations.append(operation)
                 except SignMisinterpretationError:
                     continue

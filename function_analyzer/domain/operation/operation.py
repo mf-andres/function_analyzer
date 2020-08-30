@@ -2,19 +2,8 @@ from abc import ABC, abstractmethod
 
 
 class Operation(ABC):
-    @staticmethod
     @abstractmethod
-    def operation_found(function_string):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def do_operation(function_string):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def calculate_partial_result(left_operand, right_operand):
+    def do_operation(self):
         pass
 
     @staticmethod

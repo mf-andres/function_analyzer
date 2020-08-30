@@ -1,9 +1,17 @@
 from function_analyzer.domain.operation.addition import Addition
 
 
-def test_do_addition_for_two_addends_addition():
+def test_do_operation():
     function_string = '1+1'
-    returned_function_string = Addition.do_operation(function_string)
+    operation = Addition(function_string, 1)
+    returned_function_string = operation.do_operation()
     expected_function_string = '2.0'
     assert returned_function_string == expected_function_string
 
+
+def test_do_operation_with_negative_left_operand():
+    function_string = '-1+1'
+    operation = Addition(function_string, 2)
+    returned_function_string = operation.do_operation()
+    expected_function_string = '0.0'
+    assert returned_function_string == expected_function_string

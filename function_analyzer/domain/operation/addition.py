@@ -1,30 +1,20 @@
 from function_analyzer.domain.operation.operation import Operation
 from function_analyzer.infrastracture.operand_finder.operand_finder import find_left_operand_position, \
     find_right_operand_tail_position, find_left_operand, find_right_operand
-from function_analyzer.infrastracture.sign_finder.sign_finder import find_sign_position
-from function_analyzer.use_cases.calculate_function_ordinate import do_operations_recursively
 
 
 class Addition(Operation):
-    ADDITION_SIGN = '+'
-
     def __init__(self, function_string, sign_position):
-        self.__function_string = function_string
-        self.__sign_position = sign_position
+        self.function_string = function_string
+        self.sign_position = sign_position
 
-    @staticmethod
-    def operation_found(function_string):
-        return function_string.find('+') > 0
-
-    @staticmethod
-    def do_operation(function_string):
-        sign_position = find_sign_position(function_string, Addition.ADDITION_SIGN)
-        left_operand_position = find_left_operand_position(function_string, sign_position)
-        right_operand_tail_position = find_right_operand_tail_position(function_string, sign_position)
-        left_operand = find_left_operand(function_string, sign_position, left_operand_position)
-        right_operand = find_right_operand(function_string, sign_position, right_operand_tail_position)
+    def do_operation(self):
+        left_operand_position = find_left_operand_position(self.function_string, self.sign_position)
+        right_operand_tail_position = find_right_operand_tail_position(self.function_string, self.sign_position)
+        left_operand = find_left_operand(self.function_string, self.sign_position, left_operand_position)
+        right_operand = find_right_operand(self.function_string, self.sign_position, right_operand_tail_position)
         partial_result = Addition.calculate_partial_result(left_operand, right_operand)
-        function_string = Operation.substitute_operation_for_partial_result(function_string,
+        function_string = Operation.substitute_operation_for_partial_result(self.function_string,
                                                                             left_operand_position,
                                                                             right_operand_tail_position,
                                                                             partial_result)
