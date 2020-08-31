@@ -3,13 +3,13 @@ from function_analyzer.domain.sign import is_sign
 from function_analyzer.infrastracture.errors.errors import SignMisinterpretationError
 from function_analyzer.infrastracture.operand_finder.operand_finder import find_left_operand_position, \
     find_right_operand_tail_position, find_left_operand, find_right_operand
-from function_analyzer.infrastracture.sign_finder.sign_finder import find_sign_position
 
 
 class Substraction(Operation):
     def __init__(self, function_string, sign_position):
         self.function_string = function_string
         self.sign_position = sign_position
+        self.right_operation = None
         if self.created_from_sign_of_negative_operand():
             raise SignMisinterpretationError()
 
@@ -34,6 +34,8 @@ class Substraction(Operation):
                                                                             left_operand_position,
                                                                             right_operand_tail_position,
                                                                             partial_result)
+        post_substitution_shift_length = len(left_operand) + len(right_operand)
+        self.right_operation.update(post_substitution_shift_length)
         return function_string
 
     @staticmethod
@@ -41,3 +43,8 @@ class Substraction(Operation):
         partial_result = float(left_operand) - float(right_operand)
         return partial_result
 
+    def set_right_operation(self, right_operation):
+        self.right_operation = right_operation
+
+    def update(self, shift_lenght):
+        self.sign_position -= shift_lenght
