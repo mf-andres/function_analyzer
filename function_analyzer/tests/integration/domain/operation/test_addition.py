@@ -18,11 +18,14 @@ def test_do_operation_with_negative_left_operand():
 
 
 def test_do_operation_warns_right_operation():
+    class AdditionSpy(Addition):
+        def update_positions_after_shift(self, shift_length):
+            super()
+            self.was_warned = True
+
     function_string = '1+1+1'
     operation = Addition(function_string, 1)
-    right_operation = Addition(function_string, 3)
+    right_operation = AdditionSpy(function_string, 3)
     operation.set_right_operation(right_operation)
     operation.do_operation()
-    returned_right_operation_new_position = right_operation.sign_position
-    expected_right_operation_new_position = 1
-    assert returned_right_operation_new_position == expected_right_operation_new_position
+    assert right_operation.was_warned

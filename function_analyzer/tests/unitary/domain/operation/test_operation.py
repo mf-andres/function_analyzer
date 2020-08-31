@@ -6,7 +6,7 @@ def test_substitute_operands_and_operation_for_partial_result():
     sign_position = 1
     left_operand_position = 0
     right_operand_tail = 3
-    partial_result = 3
+    partial_result = "3"
     operation = Operation(function_string, sign_position)
     returned_function_string = operation.substitute_operation_for_partial_result(
         left_operand_position,
