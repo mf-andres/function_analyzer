@@ -1,7 +1,7 @@
 def calculate_function_ordinate(operations_finder, abscissa: float, function_string: str) -> float:
     function_string = substitute_x_for_abscissa(abscissa, function_string)
     # TODO substitute x for abscissa should be also update the function_string under operations_finder object
-    operations_finder.function_string = function_string
+    operations_finder.function_string = function_string  # TODO set right operations
     substractions = operations_finder.find_substractions()
     additions = operations_finder.find_additions()
     for substraction in substractions:
