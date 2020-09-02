@@ -1,8 +1,7 @@
 from function_analyzer.domain.operation.addition import Addition
 from function_analyzer.domain.operation.operation_factory import OperationFactory
 from function_analyzer.domain.operation.substraction import Substraction
-from function_analyzer.domain.sign import is_sign
-from function_analyzer.infrastracture.errors.errors import SignMisinterpretationError
+from function_analyzer.domain.sign import is_operation_sign
 
 
 class OperationFinder:
@@ -16,12 +15,9 @@ class OperationFinder:
     def find_operations(self):  # TODO throw exception if expression is not set
         operations = list()
         for character_position, character in enumerate(self.expression.expression_string):
-            if is_sign(character):
-                try:
-                    operation = OperationFactory.create(character, self.expression, character_position)
+            if is_operation_sign(character_position, self.expression.expression_string):
+                    operation = OperationFactory.create(character, character_position)
                     operations.append(operation)
-                except SignMisinterpretationError:
-                    continue
         self.operations = operations
         return operations
 

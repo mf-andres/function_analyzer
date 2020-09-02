@@ -9,11 +9,12 @@ def calculate_function_ordinate(operations_finder, abscissa: float, function_str
     set_right_operations(operations)
     substractions = operations_finder.get_substractions()
     additions = operations_finder.get_additions()
+    function_string = expression.expression_string  # TODO do it all under expression
     for substraction in substractions:
-        substraction.do_operation()
+        function_string = substraction.do_operation(function_string)
     for addition in additions:
-        addition.do_operation()
-    ordinate = format_ordinate(expression.expression_string)
+        function_string = addition.do_operation(function_string)
+    ordinate = format_ordinate(function_string)
     return ordinate
 
 
