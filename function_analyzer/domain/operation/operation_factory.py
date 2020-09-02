@@ -4,10 +4,10 @@ from function_analyzer.domain.operation.substraction import Substraction
 
 class OperationFactory:
     @staticmethod
-    def create(sign, function_string, sign_position):
+    def create(sign, expression, sign_position):
         if sign == '-':
-            return Substraction(function_string, sign_position)
+            return Substraction(expression, sign_position)
         elif sign == '+':
-            return Addition(function_string, sign_position)
+            return Addition(expression, sign_position)
         else:
             raise NotImplementedError

@@ -4,8 +4,8 @@ from function_analyzer.infrastracture.errors.errors import SignMisinterpretation
 
 
 class Substraction(Operation):
-    def __init__(self, function_string, sign_position):
-        super().__init__(function_string, sign_position)
+    def __init__(self, expression, sign_position):
+        super().__init__(expression, sign_position)
         if self.created_from_sign_of_negative_operand():
             raise SignMisinterpretationError()
 
@@ -18,7 +18,7 @@ class Substraction(Operation):
             return False
 
     def previous_character_is_sign(self, sign_position):  # TODO could go elsewhere
-        return is_sign(self.function_string[sign_position - 1])
+        return is_sign(self.expression.expression_string[sign_position - 1])
 
     def calculate_partial_result(self, left_operand, right_operand):
         partial_result = float(left_operand) - float(right_operand)
