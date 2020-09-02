@@ -1,6 +1,5 @@
 from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
-from function_analyzer.use_cases.calculate_function_ordinate import calculate_function_ordinate, \
-    substitute_x_for_abscissa
+from function_analyzer.use_cases.calculate_function_ordinate import calculate_function_ordinate
 
 
 def test_calculate_function_ordinate_for_two_addends_addition():
@@ -37,11 +36,3 @@ def test_calculate_function_ordinate_for_many_operands_substraction():
     returned_ordinate = calculate_function_ordinate(operation_finder, abscissa, function_string)
     expected_ordinate = -2
     assert returned_ordinate == expected_ordinate
-
-
-def test_substitute_x_for_abscissa_substitutes_many_xs():  # TODO this belongs elsewhere
-    abscissa = 1
-    function_string = 'x+x+x+x'
-    returned_function_string = substitute_x_for_abscissa(abscissa, function_string)
-    expected_function_string = '1+1+1+1'
-    assert returned_function_string == expected_function_string
