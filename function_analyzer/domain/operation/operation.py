@@ -3,8 +3,9 @@ from function_analyzer.infrastracture.operand_finder.operand_finder import find_
 
 
 class Operation:
-    def __init__(self, sign_position: int):
+    def __init__(self, sign_position: int, sign_priority: int):
         self.sign_position = sign_position
+        self.sign_priority = sign_priority
         # TODO left operation
         self.right_operation = None
         # TODO left operand / operand objects

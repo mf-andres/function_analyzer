@@ -8,7 +8,7 @@ def test_substitute_operands_and_operation_for_partial_result():
     left_operand_position = 0
     right_operand_tail = 3
     partial_result = "3"
-    operation = Operation(sign_position)
+    operation = Operation(sign_position, 1)
     returned_function_string = operation.substitute_operation_for_partial_result(
         function_string,
         left_operand_position,
