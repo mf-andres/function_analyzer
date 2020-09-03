@@ -27,3 +27,17 @@ def test_sorts_many_operations_by_increasing_position():
     operation_sorter = OperationSorter()
     sorted_operations = operation_sorter.sort_by_priority(operations)
     assert sorted_operations[3] is fourth_operation
+
+
+def test_sort_two_operations_by_priority_first_then_position():
+    class OperationMock:  # TODO use fixtures
+        def __init__(self, sign_position: int, sign_priority: int):
+            self.sign_position = sign_position
+            self.sign_priority = sign_priority
+
+    first_operation = OperationMock(2, 2)
+    second_operation = OperationMock(1, 1)
+    operations = [second_operation, first_operation]
+    operation_sorter = OperationSorter()
+    sorted_operations = operation_sorter.sort_by_priority(operations)
+    assert sorted_operations[0] is first_operation
