@@ -1,19 +1,19 @@
 from function_analyzer.domain.expression import Expression
+from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
+from function_analyzer.infrastracture.operation_sorter.operation_sorter import OperationSorter
 
 
-def calculate_function_ordinate(operations_finder, abscissa: float, function_string: str) -> float:
+def calculate_function_ordinate(operation_finder: OperationFinder, operation_sorter: OperationSorter,
+                                abscissa: float, function_string: str) -> float:
     expression = Expression(function_string)
     expression.substitute_x_for_abscissa(abscissa)
-    operations_finder.set_expression(expression)
-    operations = operations_finder.find_operations()
+    operation_finder.set_expression(expression)
+    operations = operation_finder.find_operations()
     set_right_operations(operations)
-    substractions = operations_finder.get_substractions()
-    additions = operations_finder.get_additions()
+    operations = operation_sorter.sort_by_priority(operations)
     function_string = expression.expression_string  # TODO do it all under expression
-    for substraction in substractions:
-        function_string = substraction.do_operation(function_string)
-    for addition in additions:
-        function_string = addition.do_operation(function_string)
+    for operation in operations:
+        function_string = operation.do_operation(function_string)
     ordinate = format_ordinate(function_string)
     return ordinate
 
