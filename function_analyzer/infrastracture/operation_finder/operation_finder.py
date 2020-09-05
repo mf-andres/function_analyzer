@@ -6,18 +6,18 @@ from function_analyzer.domain.sign import is_operation_sign
 
 class OperationFinder:
     def __init__(self):
-        self.expression = None
+        self.expression_string = None
         self.operations = None  # TODO remove?
 
-    def set_expression(self, expression):
-        self.expression = expression
+    def set_expression_string(self, expression_string: str):
+        self.expression_string = expression_string
 
     def find_operations(self):  # TODO throw exception if expression is not set
         operations = list()
-        for character_position, character in enumerate(self.expression.expression_string):
-            if is_operation_sign(character_position, self.expression.expression_string):
-                    operation = OperationFactory.create(character, character_position)
-                    operations.append(operation)
+        for character_position, character in enumerate(self.expression_string):
+            if is_operation_sign(character_position, self.expression_string):
+                operation = OperationFactory.create(character, character_position)
+                operations.append(operation)
         self.operations = operations
         return operations
 
