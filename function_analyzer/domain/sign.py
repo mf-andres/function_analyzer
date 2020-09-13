@@ -1,12 +1,16 @@
-# TODO make a class (value object patron)
 class Sign:
+    SUBSTRACTION_CHARACTER = '-'
+    ADDITION_CHARACTER = '+'
+
+    SUBSTRACTION_PRIORITY = 1
+    ADDITION_PRIORITY = 2
+
     @staticmethod
     def is_sign(character: str):
-        if character == '-':  # TODO make signs array (character in sign_collection?)
+        if character == Sign.SUBSTRACTION_CHARACTER:  # TODO make signs array (character in sign_collection?)
             return True
-        if character == '+':
+        if character == Sign.ADDITION_CHARACTER:
             return True
-
 
     @staticmethod
     def contains_sign(string: str):
@@ -15,7 +19,6 @@ class Sign:
             if Sign.is_sign(character):
                 answer = True
         return answer
-
 
     @staticmethod
     def is_operation_sign(sign_position, function_string):  # TODO test
@@ -27,7 +30,6 @@ class Sign:
         else:
             return True
 
-
     @staticmethod
     def is_sign_of_negative_operand(sign_position, function_string):
         if sign_position == 0:
@@ -36,7 +38,6 @@ class Sign:
             return True
         else:
             return False
-
 
     @staticmethod
     def __previous_character_is_sign(sign_position, function_string):

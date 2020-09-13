@@ -3,7 +3,7 @@ from function_analyzer.infrastracture.operand_finder.operand_finder import find_
 
 
 class Operation:
-    def __init__(self, sign_position: int, sign_priority: int):
+    def __init__(self, sign_position: int, sign_priority: int):  # TODO substitute by Sign
         self.sign_position = sign_position
         self.sign_priority = sign_priority
         # TODO left operation
