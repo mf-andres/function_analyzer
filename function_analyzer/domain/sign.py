@@ -7,10 +7,10 @@ class Sign:
 
     @staticmethod
     def is_sign(character: str):
-        if character == Sign.SUBSTRACTION_CHARACTER:  # TODO make signs array (character in sign_collection?)
+        if character in [Sign.SUBSTRACTION_CHARACTER, Sign.ADDITION_CHARACTER]:
             return True
-        if character == Sign.ADDITION_CHARACTER:
-            return True
+        else:
+            return False
 
     @staticmethod
     def contains_sign(string: str):
