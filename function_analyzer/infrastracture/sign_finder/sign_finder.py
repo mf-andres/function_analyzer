@@ -1,4 +1,4 @@
-from function_analyzer.domain.sign import is_sign, contains_sign
+from function_analyzer.domain.sign import Sign
 
 
 def find_sign_position(function_string: str, sign: str) -> int:
@@ -15,7 +15,7 @@ def find_sign_position(function_string: str, sign: str) -> int:
 
 def find_left_sign_or_end_position(function_string, sign_position):
     left_substring = function_string[:sign_position]
-    if contains_sign(left_substring):
+    if Sign.contains_sign(left_substring):
         reversed_left_substring = left_substring[::-1]
         first_sign_position_in_reversed_left_substring = find_first_sign_position_in_string(reversed_left_substring)
         left_sign_position = get_string_position_from_left_substring_position(
@@ -29,7 +29,7 @@ def find_left_sign_or_end_position(function_string, sign_position):
 def find_right_sign_or_end_position(function_string, sign_position):
     sign_position_tail = sign_position + 1
     right_substring = function_string[sign_position_tail:]
-    if contains_sign(right_substring):
+    if Sign.contains_sign(right_substring):
         first_sign_position_in_right_substring = find_first_sign_position_in_string(right_substring)
         right_sign_position = get_string_position_from_right_substring_position(
             first_sign_position_in_right_substring, sign_position)
@@ -52,7 +52,7 @@ def get_string_position_from_right_substring_position(first_sign_position_in_rig
 def find_first_sign_position_in_string(string):
     character_position = 0
     for character in string:
-        if is_sign(character):
+        if Sign.is_sign(character):
             return character_position
         else:
             character_position += 1

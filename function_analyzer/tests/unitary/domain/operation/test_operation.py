@@ -1,5 +1,4 @@
-from function_analyzer.domain.expression import Expression
-from function_analyzer.domain.operation.operation import Operation
+from function_analyzer.domain.operation import Operation
 
 
 def test_substitute_operands_and_operation_for_partial_result():

@@ -1,5 +1,4 @@
-from function_analyzer.domain.expression import Expression
-from function_analyzer.domain.operation.substraction import Substraction
+from function_analyzer.infrastracture.operation.substraction import Substraction
 
 
 def test_do_operation_with_zero_result():

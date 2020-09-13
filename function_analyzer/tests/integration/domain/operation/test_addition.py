@@ -1,5 +1,4 @@
-from function_analyzer.domain.expression import Expression
-from function_analyzer.domain.operation.addition import Addition
+from function_analyzer.infrastracture.operation.addition import Addition
 
 
 # TODO make all this tests unitary

@@ -1,5 +1,5 @@
-from function_analyzer.domain.operation.addition import Addition
-from function_analyzer.domain.operation.substraction import Substraction
+from function_analyzer.infrastracture.operation.addition import Addition
+from function_analyzer.infrastracture.operation.substraction import Substraction
 
 
 class OperationFactory:
