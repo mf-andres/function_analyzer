@@ -1,16 +1,17 @@
 from function_analyzer.domain.operand import Operand
-from function_analyzer.infrastracture.operand_finder.operand_finder import find_left_operand, find_right_operand
+from function_analyzer.infrastracture.operand_finder.operand_finder import OperandFinder
 
 
 class Operation:
-    def __init__(self, sign_position: int, sign_priority: int):
+    def __init__(self, operand_finder: OperandFinder, sign_position: int, sign_priority: int):
+        self.operand_finder = operand_finder
         self.sign_position = sign_position
         self.sign_priority = sign_priority
         self.right_operation = None
 
     def do_operation(self, expression_string: str):
-        left_operand = find_left_operand(expression_string, self.sign_position)
-        right_operand = find_right_operand(expression_string, self.sign_position)
+        left_operand = self.operand_finder.find_left_operand(expression_string, self.sign_position)
+        right_operand = self.operand_finder.find_right_operand(expression_string, self.sign_position)
         partial_result = self.calculate_partial_result(left_operand, right_operand)
         expression_string = Operation.substitute_operation_for_partial_result(expression_string,
                                                                               left_operand,

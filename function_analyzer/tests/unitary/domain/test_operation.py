@@ -5,6 +5,9 @@ from function_analyzer.domain.operation import Operation
 # as Operand is just a value object it is not worthy of faking
 
 # TODO invert operand_finder dependency and unit test
+def test_do_operation():
+    pass
+
 
 def test_calculate_shift_length():
     left_operand = Operand(None, '123', None)

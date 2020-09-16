@@ -1,4 +1,3 @@
-from function_analyzer.domain.expression import Expression
 from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
 
 
