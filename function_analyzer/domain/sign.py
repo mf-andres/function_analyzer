@@ -21,7 +21,7 @@ class Sign:
         return answer
 
     @staticmethod
-    def is_operation_sign(sign_position, function_string):  # TODO test
+    def is_operation_sign(sign_position, function_string):
         sign = function_string[sign_position]
         if not Sign.is_sign(sign):
             return False

@@ -10,10 +10,7 @@ class OperationFake:
 
 
 class OperationFinderMock:
-    def set_expression_string(self, expression_string):
-        pass
-
-    def find_operations(self):
+    def find_operations(self, expression_string):
         operation = OperationFake()
         return [operation, operation, operation]
 
@@ -24,6 +21,7 @@ class OperationSorterMock:
 
 
 # TODO maybe mocks could and should be more generic
+# TODO mocks would be maintainable if they followed an interface
 def test_solve_for_abscissa():
     operation_finder = OperationFinderMock()
     operation_sorter = OperationSorterMock()

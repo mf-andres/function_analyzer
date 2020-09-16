@@ -3,16 +3,13 @@ from function_analyzer.domain.sign import Sign
 
 
 class OperationFinder:
-    def __init__(self):
-        self.expression_string = None
-
-    def set_expression_string(self, expression_string: str):
-        self.expression_string = expression_string
-
-    def find_operations(self):  # TODO throw exception if expression is not set
+    @staticmethod
+    def find_operations(expression_string):
+        if expression_string is None:
+            raise ValueError('expression_string not set')
         operations = list()
-        for character_position, character in enumerate(self.expression_string):
-            if Sign.is_operation_sign(character_position, self.expression_string):
+        for character_position, character in enumerate(expression_string):
+            if Sign.is_operation_sign(character_position, expression_string):
                 operation = OperationFactory.create(character, character_position)
                 operations.append(operation)
         return operations

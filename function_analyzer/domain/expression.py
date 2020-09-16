@@ -11,8 +11,7 @@ class Expression:
 
     def solve_for_abscissa(self, abscissa: float):
         self.substitute_x_for_abscissa(abscissa)
-        self.operation_finder.set_expression_string(self.expression_string)
-        operations = self.operation_finder.find_operations()
+        operations = self.operation_finder.find_operations(self.expression_string)
         self.set_right_operations(operations)
         operations = self.operation_sorter.sort_by_priority(operations)
         for operation in operations:
