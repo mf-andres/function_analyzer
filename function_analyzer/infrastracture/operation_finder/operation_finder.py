@@ -1,13 +1,10 @@
-from function_analyzer.infrastracture.operation.addition import Addition
 from function_analyzer.infrastracture.operation.operation_factory import OperationFactory
-from function_analyzer.infrastracture.operation.substraction import Substraction
 from function_analyzer.domain.sign import Sign
 
 
 class OperationFinder:
     def __init__(self):
         self.expression_string = None
-        self.operations = None  # TODO remove?
 
     def set_expression_string(self, expression_string: str):
         self.expression_string = expression_string
@@ -18,19 +15,4 @@ class OperationFinder:
             if Sign.is_operation_sign(character_position, self.expression_string):
                 operation = OperationFactory.create(character, character_position)
                 operations.append(operation)
-        self.operations = operations
         return operations
-
-    def get_substractions(self):  # TODO throw exception if operations not set / refactor
-        substractions = list()
-        for operation in self.operations:
-            if isinstance(operation, Substraction):
-                substractions.append(operation)
-        return substractions
-
-    def get_additions(self):
-        additions = list()
-        for operation in self.operations:
-            if isinstance(operation, Addition):
-                additions.append(operation)
-        return additions
