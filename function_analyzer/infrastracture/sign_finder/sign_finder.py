@@ -50,5 +50,4 @@ class SignFinder:
                 return character_position
             else:
                 character_position += 1
-        sign_not_found_position = -1
-        return sign_not_found_position
+        raise ValueError("No sign in string")
