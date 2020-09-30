@@ -1,13 +1,15 @@
 class Sign:
+    MULTIPLICATION_CHARACTER = '*'
     SUBSTRACTION_CHARACTER = '-'
     ADDITION_CHARACTER = '+'
 
-    SUBSTRACTION_PRIORITY = 1
-    ADDITION_PRIORITY = 2
+    MULTIPLICATION_PRIORITY = 1
+    SUBSTRACTION_PRIORITY = 2
+    ADDITION_PRIORITY = 3
 
     @staticmethod
     def is_sign(character: str):
-        if character in [Sign.SUBSTRACTION_CHARACTER, Sign.ADDITION_CHARACTER]:
+        if character in [Sign.MULTIPLICATION_CHARACTER, Sign.SUBSTRACTION_CHARACTER, Sign.ADDITION_CHARACTER]:
             return True
         else:
             return False
