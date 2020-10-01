@@ -50,3 +50,5 @@ class Operation:
 
     def update_positions_after_shift(self, shift_length):
         self.sign_position -= shift_length
+        if self.right_operation:
+            self.right_operation.update_positions_after_shift(shift_length)
