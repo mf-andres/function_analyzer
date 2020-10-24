@@ -101,3 +101,13 @@ def test_calculate_function_ordinate_for_two_operands_exponentiation():  # TODO 
     returned_ordinate = calculate_function_ordinate(operation_finder, operation_sorter, abscissa, function_string)
     expected_ordinate = 4
     assert returned_ordinate == expected_ordinate
+
+
+def test_calculate_function_ordinate_for_many_operands_exponentiation():  # TODO duplicities everywhere
+    abscissa = 2
+    function_string = 'xpxpxpx'
+    operation_finder = OperationFinder()
+    operation_sorter = OperationSorter()
+    returned_ordinate = calculate_function_ordinate(operation_finder, operation_sorter, abscissa, function_string)
+    expected_ordinate = 256
+    assert returned_ordinate == expected_ordinate
