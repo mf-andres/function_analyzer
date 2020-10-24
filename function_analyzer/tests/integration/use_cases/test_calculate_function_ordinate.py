@@ -81,3 +81,13 @@ def test_calculate_function_ordinate_for_two_operands_division():  # TODO duplic
     returned_ordinate = calculate_function_ordinate(operation_finder, operation_sorter, abscissa, function_string)
     expected_ordinate = 1
     assert returned_ordinate == expected_ordinate
+
+
+def test_calculate_function_ordinate_for_many_operands_division():  # TODO duplicities everywhere
+    abscissa = 2
+    function_string = 'x/x/x/x'
+    operation_finder = OperationFinder()
+    operation_sorter = OperationSorter()
+    returned_ordinate = calculate_function_ordinate(operation_finder, operation_sorter, abscissa, function_string)
+    expected_ordinate = 0.25
+    assert returned_ordinate == expected_ordinate
