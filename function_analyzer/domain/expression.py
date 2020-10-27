@@ -1,11 +1,12 @@
 from function_analyzer.domain.operation import Operation
 from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
 from function_analyzer.infrastracture.operation_sorter.operation_sorter import OperationSorter
-from function_analyzer.infrastracture.subexpression_finder.subexpression_finder import SubexpressionFinder
+from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_interface import SubexpressionFinderInterface
 
 
 class Expression:
-    def __init__(self, operation_finder: OperationFinder, operation_sorter: OperationSorter, expression_string: str):
+    def __init__(self, subexpression_finder: SubexpressionFinderInterface, operation_finder: OperationFinder, operation_sorter: OperationSorter, expression_string: str):
+        self.subexpression_finder = subexpression_finder
         self.operation_finder = operation_finder
         self.operation_sorter = operation_sorter
         self.expression_string = expression_string
@@ -15,7 +16,7 @@ class Expression:
         self.right_subexpression = None
 
     def solve_for_abscissa(self, abscissa: float):
-        subexpressions = SubexpressionFinder.find_subexpressions(self.expression_string)
+        subexpressions = self.subexpression_finder.find_subexpressions(self.expression_string)
         self.set_right_subexpressions(subexpressions)
         for subexpression in subexpressions:
             solved_subexpression = subexpression.solve_for_abscissa(abscissa)
