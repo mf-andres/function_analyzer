@@ -33,7 +33,6 @@ def test_solve_for_abscissa():
     assert returned_solved_expression == expected_solved_expression
 
 
-
 def test_substitute_x_for_abscissa_substitutes_many_xs():
     abscissa = 1
     expression_string = 'x+x+x+x'

@@ -14,6 +14,13 @@ def test_finds_many_subexpressions():
 
 
 def test_finds_one_subexpression_with_subexpressions():
-    expression_string = "x*((x+1)*(x+2))"
+    expression_string = "x*((x*(x+1))*(x+2))"
     subexpressions = SubexpressionFinder.find_subexpressions(expression_string)
     assert len(subexpressions) == 1
+
+
+def test_finds_one_subexpression_correctly():
+    expression_string = "x*(x-1)"
+    subexpressions = SubexpressionFinder.find_subexpressions(expression_string)
+    subexpression = subexpressions[0]
+    assert subexpression.expression_string == "x-1"
