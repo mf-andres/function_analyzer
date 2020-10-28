@@ -16,6 +16,8 @@ class Expression:
         self.right_subexpression = None
 
     def solve_for_abscissa(self, abscissa: float):
+        self.substitute_x_for_abscissa(abscissa)
+
         subexpressions = self.subexpression_finder.find_subexpressions(self.expression_string)
         self.set_right_subexpressions(subexpressions)
         for subexpression in subexpressions:
@@ -23,19 +25,23 @@ class Expression:
             self.expression_string = self.substitute_subexpression(self.expression_string, solved_subexpression,
                                                                    subexpression)
 
-        self.substitute_x_for_abscissa(abscissa)
         operations = self.operation_finder.find_operations(self.expression_string)
         self.set_right_operations(operations)
         operations = self.operation_sorter.sort_by_priority(operations)
         for operation in operations:
             self.expression_string = operation.do_operation(self.expression_string)
+
         ordinate = self.format_ordinate(self.expression_string)
 
-        post_substitution_shift_length = self.calculate_shift_length()
-        if self.right_subexpression is not None:
+        if self.i_am_subexpression():
+            post_substitution_shift_length = self.calculate_shift_length()
             self.right_subexpression.update_position_after_shift(post_substitution_shift_length)
 
         return ordinate
+
+    def i_am_subexpression(self):
+        i_am_subexpression = self.position is not None and self.tail is not None and self.right_subexpression is not None
+        return i_am_subexpression
 
     @staticmethod
     def set_right_subexpressions(subexpressions):
@@ -48,10 +54,10 @@ class Expression:
 
     @staticmethod
     def substitute_subexpression(expression_string, solved_subexpression, subexpression):
-        function_string_left_to_subexpression = expression_string[:subexpression.position]
-        function_string_right_to_subexpression = expression_string[subexpression.tail:]
+        function_string_left_to_subexpression = expression_string[:subexpression.position - 1]
+        function_string_right_to_subexpression = expression_string[subexpression.tail + 1:]
         expression_string = function_string_left_to_subexpression \
-                            + solved_subexpression \
+                            + str(solved_subexpression) \
                             + function_string_right_to_subexpression
         return expression_string
 

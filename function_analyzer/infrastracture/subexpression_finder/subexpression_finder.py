@@ -17,6 +17,8 @@ class SubexpressionFinder(SubexpressionFinderInterface):
             subexpression_string = expression_string[opening_parenthesis + 1: closing_parenthesis]
             subexpression = Expression(SubexpressionFinder(), OperationFinder(), OperationSorter(),
                                        subexpression_string)
+            subexpression.position = opening_parenthesis + 1
+            subexpression.tail = closing_parenthesis
             subexpressions.append(subexpression)
 
         return subexpressions

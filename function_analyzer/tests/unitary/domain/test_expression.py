@@ -1,3 +1,5 @@
+from unittest.mock import Mock
+
 from function_analyzer.domain.expression import Expression
 
 
@@ -23,10 +25,12 @@ class OperationSorterMock:
 # TODO maybe mocks could and should be more generic
 # TODO mocks would be maintainable if they followed an interface
 def test_solve_for_abscissa():
+    subexpression_finder = Mock()
+    subexpression_finder.find_subexpressions = Mock(return_value=[])
     operation_finder = OperationFinderMock()
     operation_sorter = OperationSorterMock()
     expression_string = 'x+x+x+x'
-    expression = Expression(operation_finder, operation_sorter, expression_string)
+    expression = Expression(subexpression_finder, operation_finder, operation_sorter, expression_string)
     abscissa = 1
     returned_solved_expression = expression.solve_for_abscissa(abscissa)
     expected_solved_expression = 4
@@ -36,7 +40,7 @@ def test_solve_for_abscissa():
 def test_substitute_x_for_abscissa_substitutes_many_xs():
     abscissa = 1
     expression_string = 'x+x+x+x'
-    expression = Expression(None, None, expression_string)
+    expression = Expression(None, None, None, expression_string)
     expression.substitute_x_for_abscissa(abscissa)
     returned_function_string = expression.expression_string
     expected_function_string = '1+1+1+1'
