@@ -33,13 +33,13 @@ class Expression:
 
         ordinate = self.format_ordinate(self.expression_string)
 
-        if self.i_am_subexpression():
+        if self.i_am_subexpression_and_there_is_another_following():
             post_substitution_shift_length = self.calculate_shift_length()
             self.right_subexpression.update_position_after_shift(post_substitution_shift_length)
 
         return ordinate
 
-    def i_am_subexpression(self):
+    def i_am_subexpression_and_there_is_another_following(self):
         i_am_subexpression = self.position is not None and self.tail is not None and self.right_subexpression is not None
         return i_am_subexpression
 
@@ -62,7 +62,7 @@ class Expression:
         return expression_string
 
     def calculate_shift_length(self):
-        post_substitution_shift_length = self.tail - self.position  # TODO how are parentheses handled?
+        post_substitution_shift_length = 2 + self.tail - self.position - len(self.expression_string)
         return post_substitution_shift_length
 
     def substitute_x_for_abscissa(self, abscissa: float):
@@ -77,3 +77,7 @@ class Expression:
     @staticmethod
     def format_ordinate(ordinate: str) -> float:
         return float(ordinate)
+
+    def update_position_after_shift(self, post_substitution_shift_length: int):
+        self.position -= post_substitution_shift_length
+        self.tail -= post_substitution_shift_length

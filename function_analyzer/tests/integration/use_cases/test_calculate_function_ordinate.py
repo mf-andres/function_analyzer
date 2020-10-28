@@ -88,10 +88,17 @@ def test_calculate_function_ordinate_for_expression_with_multiplication_and_subt
     assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
 
 
-def test_calculate_function_ordinate_for_many_expression_with_one_parenthesis():
+def test_calculate_function_ordinate_for_expression_with_one_subexpression():
     abscissa = 2
     function_string = 'x*(x-x)'
     expected_ordinate = 0
+    assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
+
+
+def test_calculate_function_ordinate_for_expression_with_many_subexpressions():
+    abscissa = 2
+    function_string = 'x*(x-x)+x*(x+1)'
+    expected_ordinate = 6
     assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
 
 
@@ -101,5 +108,6 @@ def assert_solving_expression_returns_expected_ordinate(
     subexpression_finder = SubexpressionFinder()
     operation_finder = OperationFinder()
     operation_sorter = OperationSorter()
-    returned_ordinate = calculate_function_ordinate(subexpression_finder, operation_finder, operation_sorter, abscissa, function_string)
+    returned_ordinate = calculate_function_ordinate(subexpression_finder, operation_finder, operation_sorter, abscissa,
+                                                    function_string)
     assert returned_ordinate == expected_ordinate
