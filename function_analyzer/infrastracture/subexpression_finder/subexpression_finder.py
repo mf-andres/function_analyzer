@@ -8,21 +8,30 @@ from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_
 class SubexpressionFinder(SubexpressionFinderInterface):
     @staticmethod
     def find_subexpressions(expression_string: str):
-        opening_parentheses = list()
-        closing_parentheses = list()
-        for character_position, character in enumerate(expression_string):
-            if character == "(":
-                opening_parentheses.append(character_position)
-            elif character == ")":
-                closing_parentheses.append(character_position)
+        opening_parentheses = SubexpressionFinder.find_opening_parentheses(expression_string)
+        closing_parentheses = SubexpressionFinder.find_closing_parentheses(expression_string)
 
         subexpressions = list()
-        for parentheses_par in range(len(opening_parentheses)):  # TODO doable with zip
-            opening_parenthesis = opening_parentheses[parentheses_par]
-            closing_parenthesis = closing_parentheses[parentheses_par]
+        for opening_parenthesis, closing_parenthesis in zip(opening_parentheses, closing_parentheses):
             subexpression_string = expression_string[opening_parenthesis + 1: closing_parenthesis - 1]
             subexpression = Expression(SubexpressionFinder(), OperationFinder(), OperationSorter(), subexpression_string)
             subexpressions.append(subexpression)
 
         return subexpressions
+
+    @staticmethod
+    def find_closing_parentheses(expression_string):
+        closing_parentheses = list()
+        for character_position, character in enumerate(expression_string):
+            if character == ")":
+                closing_parentheses.append(character_position)
+        return closing_parentheses
+
+    @staticmethod
+    def find_opening_parentheses(expression_string):
+        opening_parentheses = list()
+        for character_position, character in enumerate(expression_string):
+            if character == "(":
+                opening_parentheses.append(character_position)
+        return opening_parentheses
 
