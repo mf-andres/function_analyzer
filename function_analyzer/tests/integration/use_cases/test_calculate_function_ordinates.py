@@ -34,3 +34,17 @@ def test_returns_as_many_ordinates_as_domain_len():
     domain_len = get_domain_len(from_domain, to_domain, domain_step)
     assert len(ordinates) == domain_len
 
+
+def test_returns_correct_ordinates():
+    subexpression_finder = SubexpressionFinder()
+    operation_finder = OperationFinder()
+    operation_sorter = OperationSorter()
+    from_domain = 0
+    to_domain = 3
+    domain_step = 1
+    expression_string = "x*(x-1)"
+    ordinates = calculate_function_ordinates(subexpression_finder, operation_finder, operation_sorter,
+                                             expression_string,
+                                             from_domain, to_domain, domain_step)
+    expected_ordinates = [0, 0, 2]
+    assert ordinates == expected_ordinates
