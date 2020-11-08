@@ -31,5 +31,6 @@ def test_returns_as_many_ordinates_as_domain_len():
     ordinates = calculate_function_ordinates(subexpression_finder, operation_finder, operation_sorter,
                                              expression_string,
                                              from_domain, to_domain, domain_step)
-    domain_len = get_domain_len(to_domain, from_domain, domain_step)
+    domain_len = get_domain_len(from_domain, to_domain, domain_step)
     assert len(ordinates) == domain_len
+
