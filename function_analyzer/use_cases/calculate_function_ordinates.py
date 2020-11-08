@@ -5,6 +5,8 @@ from function_analyzer.use_cases.calculate_function_ordinate import calculate_fu
 def calculate_function_ordinates(subexpression_finder, operation_finder, operation_sorter,
                                  expression_string: str,
                                  from_domain: int = 0, to_domain: int = 100, domain_step: int = 1):
+    assert to_domain > from_domain  # TODO domain exception
+
     ordinates = list()
     abscissas = get_abscissas(from_domain, to_domain, domain_step)
     for abscissa in abscissas:
@@ -23,3 +25,6 @@ def get_abscissas(from_domain: int, to_domain: int, domain_step: int):
         abscissa += abscissa + domain_step
         abscissas.append(abscissa)
     return abscissas
+
+
+# TODO when numbers are too great (100e+6) scientific notation breaks the program
