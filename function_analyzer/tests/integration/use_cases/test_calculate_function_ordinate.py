@@ -116,6 +116,13 @@ def test_calculate_function_ordinate_for_expression_many_subexpressions_inside_s
     assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
 
 
+def test_calculate_function_ordinate_for_0_valued_abscissa_bug():
+    abscissa = 0
+    function_string = 'x*(x-1)'
+    expected_ordinate = 0
+    assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
+
+
 def assert_solving_expression_returns_expected_ordinate(
         abscissa: float, function_string: str, expected_ordinate: float
 ):

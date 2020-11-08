@@ -39,6 +39,14 @@ class Sign:
             return True
 
     @staticmethod
+    def contains_operation_sign(function_string: str):
+        answer = False
+        for character_position, character in enumerate(function_string):
+            if Sign.is_operation_sign(character_position, function_string):
+                answer = True
+        return answer
+
+    @staticmethod
     def is_sign_of_negative_operand(sign_position, function_string):
         if sign_position == 0:
             return True
