@@ -109,6 +109,13 @@ def test_calculate_function_ordinate_for_expression_subexpressions_inside_subexp
     assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
 
 
+def test_calculate_function_ordinate_for_expression_many_subexpressions_inside_subexpressions():
+    abscissa = 2
+    function_string = 'x*((x-1)*(x*(x+1)))'
+    expected_ordinate = 12
+    assert_solving_expression_returns_expected_ordinate(abscissa, function_string, expected_ordinate)
+
+
 def assert_solving_expression_returns_expected_ordinate(
         abscissa: float, function_string: str, expected_ordinate: float
 ):
