@@ -1,4 +1,6 @@
-from function_analyzer.infrastracture.subexpression_finder.subexpression_finder import SubexpressionFinder
+from function_analyzer.infrastracture.subexpression_finder.subexpression_finder import (
+    SubexpressionFinder,
+)
 
 
 def test_finds_one_subexpression():  # TODO refactor things under here

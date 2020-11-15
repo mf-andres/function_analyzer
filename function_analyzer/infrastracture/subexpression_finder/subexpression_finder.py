@@ -1,22 +1,38 @@
 from typing import List
 
 from function_analyzer.domain.expression import Expression
-from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
-from function_analyzer.infrastracture.operation_sorter.operation_sorter import OperationSorter
-from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_interface import \
-    SubexpressionFinderInterface
+from function_analyzer.infrastracture.operation_finder.operation_finder import (
+    OperationFinder,
+)
+from function_analyzer.infrastracture.operation_sorter.operation_sorter import (
+    OperationSorter,
+)
+from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_interface import (
+    SubexpressionFinderInterface,
+)
 
 
 class SubexpressionFinder(SubexpressionFinderInterface):
     @staticmethod
     def find_subexpressions(expression_string: str) -> List[Expression]:
-        opening_parentheses, closing_parentheses = SubexpressionFinder.find_parentheses_pairs(expression_string)
+        (
+            opening_parentheses,
+            closing_parentheses,
+        ) = SubexpressionFinder.find_parentheses_pairs(expression_string)
 
         subexpressions = list()
-        for opening_parenthesis, closing_parenthesis in zip(opening_parentheses, closing_parentheses):
-            subexpression_string = expression_string[opening_parenthesis + 1: closing_parenthesis]
-            subexpression = Expression(SubexpressionFinder(), OperationFinder(), OperationSorter(),
-                                       subexpression_string)
+        for opening_parenthesis, closing_parenthesis in zip(
+            opening_parentheses, closing_parentheses
+        ):
+            subexpression_string = expression_string[
+                opening_parenthesis + 1 : closing_parenthesis
+            ]
+            subexpression = Expression(
+                SubexpressionFinder(),
+                OperationFinder(),
+                OperationSorter(),
+                subexpression_string,
+            )
             subexpression.position = opening_parenthesis + 1
             subexpression.tail = closing_parenthesis
             subexpressions.append(subexpression)

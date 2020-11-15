@@ -12,13 +12,19 @@ class OperationFactory:
     def create(sign: str, sign_position: int):
         operand_finder = OperandFinder()
         if sign == Sign.EXPONENTIATION_CHARACTER:
-            return Exponentiation(operand_finder, sign_position, Sign.EXPONENTIATION_PRIORITY)
+            return Exponentiation(
+                operand_finder, sign_position, Sign.EXPONENTIATION_PRIORITY
+            )
         if sign == Sign.DIVISION_CHARACTER:
             return Division(operand_finder, sign_position, Sign.DIVISION_PRIORITY)
         if sign == Sign.MULTIPLICATION_CHARACTER:
-            return Multiplication(operand_finder, sign_position, Sign.MULTIPLICATION_PRIORITY)
+            return Multiplication(
+                operand_finder, sign_position, Sign.MULTIPLICATION_PRIORITY
+            )
         if sign == Sign.SUBSTRACTION_CHARACTER:
-            return Substraction(operand_finder, sign_position, Sign.SUBSTRACTION_PRIORITY)
+            return Substraction(
+                operand_finder, sign_position, Sign.SUBSTRACTION_PRIORITY
+            )
         elif sign == Sign.ADDITION_CHARACTER:
             return Addition(operand_finder, sign_position, Sign.ADDITION_PRIORITY)
         else:

@@ -3,29 +3,29 @@ from function_analyzer.infrastracture.operation.substraction import Substraction
 
 
 def test_do_operation_with_zero_result():
-    function_string = '1-1'
+    function_string = "1-1"
     operand_finder = OperandFinder()
     operation = Substraction(operand_finder, 1, 1)
     returned_function_string = operation.do_operation(function_string)
-    expected_function_string = '0.0'
+    expected_function_string = "0.0"
     assert returned_function_string == expected_function_string
 
 
 def test_do_operation_with_negative_result():
-    function_string = '1-2'
+    function_string = "1-2"
     operand_finder = OperandFinder()
     operation = Substraction(operand_finder, 1, 1)
     returned_function_string = operation.do_operation(function_string)
-    expected_function_string = '-1.0'
+    expected_function_string = "-1.0"
     assert returned_function_string == expected_function_string
 
 
 def test_do_operation_with_negative_left_operand():
-    function_string = '-1-1'
+    function_string = "-1-1"
     operand_finder = OperandFinder()
     operation = Substraction(operand_finder, 2, 1)
     returned_function_string = operation.do_operation(function_string)
-    expected_function_string = '-2.0'
+    expected_function_string = "-2.0"
     assert returned_function_string == expected_function_string
 
 
@@ -35,7 +35,7 @@ def test_do_operation_warns_right_operation():
             super()
             self.was_warned = True
 
-    function_string = '1-1-1'
+    function_string = "1-1-1"
     operand_finder = OperandFinder()
     operation = Substraction(operand_finder, 1, 1)
     right_operation = SubstractionSpy(operand_finder, 3, 1)

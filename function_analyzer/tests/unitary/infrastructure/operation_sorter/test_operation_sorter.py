@@ -1,4 +1,6 @@
-from function_analyzer.infrastracture.operation_sorter.operation_sorter import OperationSorter
+from function_analyzer.infrastracture.operation_sorter.operation_sorter import (
+    OperationSorter,
+)
 
 
 def test_sorts_two_operations_by_increasing_position():
@@ -28,7 +30,12 @@ def test_sorts_many_operations_by_increasing_position():
     operations = [fourth_operation, first_operation, third_operation, second_operation]
     operation_sorter = OperationSorter()
     sorted_operations = operation_sorter.sort_by_priority(operations)
-    expected_sorted_operations = [first_operation, second_operation, third_operation, fourth_operation]
+    expected_sorted_operations = [
+        first_operation,
+        second_operation,
+        third_operation,
+        fourth_operation,
+    ]
     assert sorted_operations == expected_sorted_operations
 
 
@@ -59,5 +66,10 @@ def test_sort_many_operations_by_priority_first_then_position():
     operations = [third_operation, fourth_operation, second_operation, first_operation]
     operation_sorter = OperationSorter()
     sorted_operations = operation_sorter.sort_by_priority(operations)
-    expected_sorted_operations = [first_operation, second_operation, third_operation, fourth_operation]
+    expected_sorted_operations = [
+        first_operation,
+        second_operation,
+        third_operation,
+        fourth_operation,
+    ]
     assert sorted_operations == expected_sorted_operations

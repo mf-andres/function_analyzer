@@ -12,5 +12,5 @@ def test_is_sign_when_sign_given(sign):
 # @pytest.mark.parametrize("sign_position, expression_string", [(0, '-1'), (2, '1*-1')])
 def test_is_operation_sign_returns_false_for_negative_operand_sign():
     sign_position = 0
-    expression_string = '-1'
+    expression_string = "-1"
     assert Sign.is_operation_sign(sign_position, expression_string) is False

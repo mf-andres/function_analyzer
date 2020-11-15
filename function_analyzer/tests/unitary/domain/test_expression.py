@@ -29,8 +29,10 @@ def test_solve_for_abscissa():
     subexpression_finder.find_subexpressions = Mock(return_value=[])
     operation_finder = OperationFinderMock()
     operation_sorter = OperationSorterMock()
-    expression_string = 'x+x+x+x'
-    expression = Expression(subexpression_finder, operation_finder, operation_sorter, expression_string)
+    expression_string = "x+x+x+x"
+    expression = Expression(
+        subexpression_finder, operation_finder, operation_sorter, expression_string
+    )
     abscissa = 1
     returned_solved_expression = expression.solve_for_abscissa(abscissa)
     expected_solved_expression = 4
@@ -39,9 +41,9 @@ def test_solve_for_abscissa():
 
 def test_substitute_x_for_abscissa_substitutes_many_xs():
     abscissa = 1
-    expression_string = 'x+x+x+x'
+    expression_string = "x+x+x+x"
     expression = Expression(None, None, None, expression_string)
     expression.substitute_x_for_abscissa(abscissa)
     returned_function_string = expression.expression_string
-    expected_function_string = '1+1+1+1'
+    expected_function_string = "1+1+1+1"
     assert returned_function_string == expected_function_string
