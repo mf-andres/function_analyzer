@@ -7,7 +7,7 @@ from function_analyzer.infrastracture.subexpression_finder.subexpression_finder 
 from function_analyzer.use_cases.calculate_function_ordinates import calculate_function_ordinates, get_abscissas
 
 
-def main(expression_string: str, from_domain: int, to_domain: int, domain_step: int):
+def main(expression_string: str, from_domain: int = 0, to_domain: int  = 100, domain_step: int = 1):
     subexpression_finder = SubexpressionFinder()
     operation_finder = OperationFinder()
     operation_sorter = OperationSorter()
