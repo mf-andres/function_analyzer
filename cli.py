@@ -15,6 +15,10 @@ def main(expression_string: str, from_domain: int = 0, to_domain: int  = 100, do
     abscissas = get_abscissas(from_domain, to_domain, domain_step)
     ordinates = calculate_function_ordinates(subexpression_finder, operation_finder, operation_sorter,
                                              expression_string, abscissas)
+    print_function_graph(abscissas, expression_string, ordinates)
+
+
+def print_function_graph(abscissas, expression_string, ordinates):
     plt.plot(abscissas, ordinates)
     plt.title(expression_string)
 
