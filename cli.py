@@ -2,8 +2,8 @@ import typer
 import matplotlib.pyplot as plt
 
 from function_analyzer.domain.abscissa import get_abscissas
-from function_analyzer.infrastracture.operation_finder.operation_finder import OperationFinder
-from function_analyzer.infrastracture.operation_sorter.operation_sorter import OperationSorter
+from function_analyzer.infrastracture.operation_finder import OperationFinder
+from function_analyzer.infrastracture.operation_sorter import OperationSorter
 from function_analyzer.infrastracture.subexpression_finder.subexpression_finder import SubexpressionFinder
 from function_analyzer.use_cases.calculate_function_ordinates import calculate_function_ordinates
 

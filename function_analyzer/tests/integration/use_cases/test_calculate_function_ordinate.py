@@ -1,7 +1,7 @@
-from function_analyzer.infrastracture.operation_finder.operation_finder import (
+from function_analyzer.infrastracture.operation_finder import (
     OperationFinder,
 )
-from function_analyzer.infrastracture.operation_sorter.operation_sorter import (
+from function_analyzer.infrastracture.operation_sorter import (
     OperationSorter,
 )
 from function_analyzer.infrastracture.subexpression_finder.subexpression_finder import (

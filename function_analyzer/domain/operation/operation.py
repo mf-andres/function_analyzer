@@ -1,5 +1,5 @@
 from function_analyzer.domain.operand import Operand
-from function_analyzer.infrastracture.operand_finder.operand_finder import OperandFinder
+from function_analyzer.infrastracture.operand_finder import OperandFinder
 
 
 class Operation:

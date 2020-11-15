@@ -1,4 +1,4 @@
-from function_analyzer.infrastracture.sign_finder.sign_finder import SignFinder
+from function_analyzer.infrastracture.sign_finder import SignFinder
 
 
 def test_find_left_sign_or_end_position_for_sum_operand():

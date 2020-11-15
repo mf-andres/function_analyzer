@@ -1,4 +1,4 @@
-from function_analyzer.infrastracture.operation_finder.operation_finder import (
+from function_analyzer.infrastracture.operation_finder import (
     OperationFinder,
 )
 

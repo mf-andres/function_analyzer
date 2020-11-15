@@ -1,6 +1,6 @@
 from function_analyzer.domain.operand import Operand
 from function_analyzer.domain.sign import Sign
-from function_analyzer.infrastracture.sign_finder.sign_finder import SignFinder
+from function_analyzer.infrastracture.sign_finder import SignFinder
 
 
 class OperandFinder:

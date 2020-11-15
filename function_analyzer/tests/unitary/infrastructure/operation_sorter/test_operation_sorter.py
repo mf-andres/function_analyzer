@@ -1,4 +1,4 @@
-from function_analyzer.infrastracture.operation_sorter.operation_sorter import (
+from function_analyzer.infrastracture.operation_sorter import (
     OperationSorter,
 )
 
