@@ -41,10 +41,10 @@ pip install -r requirements.txt
 To test the application run one of the following commands:
 
 ~~~~
-pytest tests
-pytest tests/unit
-pytest tests/integration
-pytest tests/validation
+pytest function_analyzer/tests
+pytest function_analyzer/tests/unit
+pytest function_analyzer/tests/integration
+pytest function_analyzer/tests/validation
 ~~~~
 
 
@@ -53,15 +53,15 @@ pytest tests/validation
 To print one function graph run the following command:
 
 ~~~~
-python cli.py expression_string from_domain to_domain domain_step
+python cli.py expression_string --from_domain from_domain --to_domain to_domain --domain_step domain_step
 ~~~~
 
 Where:
 
 * expression_string is the expression whose function graph we want to print
 
-* from_domain is the origin of the function graph domain
+* from_domain is the origin of the function graph domain. Optional. Default is 0.
 
-* to_domain is the end of the function graph domain
+* to_domain is the end of the function graph domain. Optional. Default is 100.
 
-* domain_step is the interval between abscissas of the function graph
+* domain_step is the interval between abscissas of the function graph. Optional. Default is 1.
