@@ -12,7 +12,7 @@ from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_
 )
 
 
-class SubexpressionFinder(SubexpressionFinderInterface):
+class SubexpressionFinder(SubexpressionFinderInterface):   # TODO refactor subexpression finding
     @staticmethod
     def find_subexpressions(expression_string: str) -> List[Expression]:
         (

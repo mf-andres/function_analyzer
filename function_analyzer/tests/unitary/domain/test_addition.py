@@ -2,7 +2,6 @@ from function_analyzer.infrastracture.operand_finder import OperandFinder
 from function_analyzer.domain.operation.addition import Addition
 
 
-# TODO make all this tests unitary
 def test_do_operation():
     function_string = "1+1"
     operand_finder = OperandFinder()

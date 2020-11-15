@@ -22,8 +22,6 @@ class OperationSorterMock:
         return operations
 
 
-# TODO maybe mocks could and should be more generic
-# TODO mocks would be maintainable if they followed an interface
 def test_solve_for_abscissa():
     subexpression_finder = Mock()
     subexpression_finder.find_subexpressions = Mock(return_value=[])

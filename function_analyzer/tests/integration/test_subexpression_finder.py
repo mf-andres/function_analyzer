@@ -3,7 +3,7 @@ from function_analyzer.infrastracture.subexpression_finder.subexpression_finder 
 )
 
 
-def test_finds_one_subexpression():  # TODO refactor things under here
+def test_finds_one_subexpression():
     expression_string = "x*(x-1)"
     subexpressions = SubexpressionFinder.find_subexpressions(expression_string)
     assert len(subexpressions) == 1

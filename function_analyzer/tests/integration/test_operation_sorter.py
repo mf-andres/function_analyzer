@@ -4,11 +4,6 @@ from function_analyzer.infrastracture.operation_sorter import (
 
 
 def test_sorts_two_operations_by_increasing_position():
-    class OperationMock:  # TODO use fixtures
-        def __init__(self, sign_position: int, sign_priority: int):
-            self.sign_position = sign_position
-            self.sign_priority = sign_priority
-
     first_operation = OperationMock(1, 1)
     second_operation = OperationMock(5, 1)
     operations = [first_operation, second_operation]
@@ -18,11 +13,6 @@ def test_sorts_two_operations_by_increasing_position():
 
 
 def test_sorts_many_operations_by_increasing_position():
-    class OperationMock:  # TODO use fixtures
-        def __init__(self, sign_position: int, sign_priority: int):
-            self.sign_position = sign_position
-            self.sign_priority = sign_priority
-
     first_operation = OperationMock(1, 1)
     second_operation = OperationMock(2, 1)
     third_operation = OperationMock(3, 1)
@@ -40,11 +30,6 @@ def test_sorts_many_operations_by_increasing_position():
 
 
 def test_sort_two_operations_by_priority_first_then_position():
-    class OperationMock:  # TODO use fixtures
-        def __init__(self, sign_position: int, sign_priority: int):
-            self.sign_position = sign_position
-            self.sign_priority = sign_priority
-
     first_operation = OperationMock(2, 1)
     second_operation = OperationMock(1, 2)
     operations = [second_operation, first_operation]
@@ -54,11 +39,6 @@ def test_sort_two_operations_by_priority_first_then_position():
 
 
 def test_sort_many_operations_by_priority_first_then_position():
-    class OperationMock:  # TODO use fixtures
-        def __init__(self, sign_position: int, sign_priority: int):
-            self.sign_position = sign_position
-            self.sign_priority = sign_priority
-
     first_operation = OperationMock(1, 1)
     second_operation = OperationMock(2, 1)
     third_operation = OperationMock(3, 2)
@@ -73,3 +53,9 @@ def test_sort_many_operations_by_priority_first_then_position():
         fourth_operation,
     ]
     assert sorted_operations == expected_sorted_operations
+
+
+class OperationMock:
+    def __init__(self, sign_position: int, sign_priority: int):
+        self.sign_position = sign_position
+        self.sign_priority = sign_priority
