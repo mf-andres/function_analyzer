@@ -1,10 +1,10 @@
 from function_analyzer.domain.sign import Sign
 from function_analyzer.infrastracture.operand_finder.operand_finder import OperandFinder
-from function_analyzer.infrastracture.operation.addition import Addition
-from function_analyzer.infrastracture.operation.division import Division
-from function_analyzer.infrastracture.operation.exponentiation import Exponentiation
-from function_analyzer.infrastracture.operation.substraction import Substraction
-from function_analyzer.infrastracture.operation.multiplication import Multiplication
+from function_analyzer.domain.operation.addition import Addition
+from function_analyzer.domain.operation.division import Division
+from function_analyzer.domain.operation.exponentiation import Exponentiation
+from function_analyzer.domain.operation.substraction import Substraction
+from function_analyzer.domain.operation.multiplication import Multiplication
 
 
 class OperationFactory:

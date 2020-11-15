@@ -1,4 +1,4 @@
-from function_analyzer.infrastracture.operation.operation_factory import (
+from function_analyzer.domain.operation.operation_factory import (
     OperationFactory,
 )
 from function_analyzer.domain.sign import Sign

@@ -1,4 +1,4 @@
-from function_analyzer.domain.operation import Operation
+from function_analyzer.domain.operation.operation import Operation
 
 
 # TODO make domain services and just unit test the use cases

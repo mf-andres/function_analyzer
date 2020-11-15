@@ -1,5 +1,5 @@
 from function_analyzer.domain.operand import Operand
-from function_analyzer.domain.operation import Operation
+from function_analyzer.domain.operation.operation import Operation
 
 
 # as Operand is just a value object it is not worthy of faking

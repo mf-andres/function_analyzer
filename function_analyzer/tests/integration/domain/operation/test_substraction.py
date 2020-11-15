@@ -1,5 +1,5 @@
 from function_analyzer.infrastracture.operand_finder.operand_finder import OperandFinder
-from function_analyzer.infrastracture.operation.substraction import Substraction
+from function_analyzer.domain.operation.substraction import Substraction
 
 
 def test_do_operation_with_zero_result():

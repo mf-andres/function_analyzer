@@ -1,5 +1,5 @@
 from function_analyzer.infrastracture.operand_finder.operand_finder import OperandFinder
-from function_analyzer.infrastracture.operation.addition import Addition
+from function_analyzer.domain.operation.addition import Addition
 
 
 # TODO make all this tests unitary
