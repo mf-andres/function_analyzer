@@ -1,4 +1,0 @@
-expression = expressions + operations
-operation = operands + sign
-operand -> 123, 12, 2, 0.3 ...
-sign -> +, -, *, /, e, s, l
