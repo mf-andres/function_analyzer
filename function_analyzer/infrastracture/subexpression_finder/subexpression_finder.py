@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 from function_analyzer.domain.expression import Expression
 from function_analyzer.infrastracture.operation_finder import (
@@ -12,7 +12,7 @@ from function_analyzer.infrastracture.subexpression_finder.subexpression_finder_
 )
 
 
-class SubexpressionFinder(SubexpressionFinderInterface):   # TODO refactor subexpression finding
+class SubexpressionFinder(SubexpressionFinderInterface):
     @staticmethod
     def find_subexpressions(expression_string: str) -> List[Expression]:
         (
@@ -25,7 +25,7 @@ class SubexpressionFinder(SubexpressionFinderInterface):   # TODO refactor subex
             opening_parentheses, closing_parentheses
         ):
             subexpression_string = expression_string[
-                opening_parenthesis + 1 : closing_parenthesis
+                opening_parenthesis + 1: closing_parenthesis
             ]
             subexpression = Expression(
                 SubexpressionFinder(),
@@ -40,7 +40,7 @@ class SubexpressionFinder(SubexpressionFinderInterface):   # TODO refactor subex
         return subexpressions
 
     @staticmethod
-    def find_parentheses_pairs(expression_string):
+    def find_parentheses_pairs(expression_string) -> Tuple[List[int], List[int]]:
         opening_parentheses = list()
         closing_parentheses = list()
         parenthesis_yet_to_be_close = 0
